@@ -1578,6 +1578,9 @@ See `compilation-error-regexp-alist' for help on their format.")
   " nREPL"
   nrepl-interaction-mode-map
   (make-local-variable 'completion-at-point-functions)
+  (let ((ns (clojure-find-ns)))
+    (if ns
+        (setq nrepl-buffer-ns ns)))
   (add-to-list 'completion-at-point-functions
                'nrepl-complete-at-point))
 
